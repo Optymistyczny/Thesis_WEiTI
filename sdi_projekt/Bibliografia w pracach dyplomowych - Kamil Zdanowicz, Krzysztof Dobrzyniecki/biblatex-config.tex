@@ -1,0 +1,354 @@
+\usepackage{xpatch}
+
+% Przecinki zamiast kropek pomiędzy polami
+\DeclareDelimFormat{newunitpunct}{\addcomma\space}
+% Brak kropki na końcu wpisu
+\DeclareDelimFormat{finentrypunct}{}
+% Lokacje oddzielamy slashem
+\DeclareDelimFormat{multilistdelim}{\addslash}
+\DeclareDelimFormat{finallistdelim}{\addslash}
+\DeclareDelimFormat{bibdaterangesep}{\textendash}
+
+% Kolejność nazwisko-imię lub na odwrót 
+\DeclareNameAlias{author}{family-given}
+\DeclareNameAlias{editor}{given-family}
+\DeclareNameAlias{translator}{given-family}
+\DeclareNameAlias{default}{given-family}
+\DeclareNameAlias{supervisor}{given-family}
+
+% Tytuł jest bez formatowania, chyba że jest
+\DeclareFieldFormat*{title}{#1}
+\DeclareFieldFormat[book]{title}{\mkbibemph{#1}}
+
+% strony, dla książek w nawiasie
+\DeclareFieldFormat{pages}{ss.\nobreakspace#1}
+\DeclareFieldFormat[book]{pages}{\mkbibparens{ss.\nobreakspace#1}}
+\DeclareFieldFormat[inbook]{pages}{\mkbibparens{ss.\nobreakspace#1}}
+
+% Trochę zmieniamy teksty wbudowane
+\NewBibliographyString{engthesis}
+\DefineBibliographyStrings{polish}{%
+    phdthesis   =   {rozprawa doktorska},
+    engthesis   =   {praca inżynierska},
+}
+
+\xpatchbibmacro{byeditor+others}{\usebibmacro{bytranslator+others}}
+{\usebibmacro{bytranslator}}{}{\ddt}
+
+% tłumacz w nawiasie
+\renewbibmacro*{bytranslator}{%
+    \ifnameundef{translator}
+    {}
+    {\addcomma\space\mkbibparens{tłum.
+        \setunit{\addspace}%
+        \printnames[bytranslator]{translator}}
+    }
+}
+
+% wydanie
+\DeclareFieldFormat{edition}{\mkbibparens{wyd.\nobreakspace#1}}
+\renewbibmacro*{url+urldate}{%
+    \iffieldundef{url}{}
+    {
+        \mkbibacro{URL}\nopunct
+        \iffieldundef{urlyear}{}
+        {
+            \setunit*{\addspace}%
+            \usebibmacro{urldate}
+        }\addcolon\addspace
+        \usebibmacro{url}%
+    }
+}
+\DeclareFieldFormat{url}{\url{#1}}
+\DeclareFieldFormat{urldate}{\mkbibparens{dost. #1}}
+\DeclareFieldFormat{indextitle}{#1,}
+\DeclareFieldFormat{note}{\mkbibparens{#1}}
+
+% Zmienia "w" na "W:"
+\renewbibmacro*{in:}{%
+  \bibcpstring{in}\addcolon%
+  \printunit{\intitlepunct}
+}
+
+% Autorzy: max 7, ogranicza do 7. Redaktorzy: Max 3, ogranicza do 1
+\xpatchbibmacro{author}{\printnames{author}}{\printnames[][-7]{author}}{}{\ddt}
+\xpatchbibmacro{editor}{\printnames{editor}}{%
+    \printnames[][-\ifnum\value{listtotal}>3 1 \else 3 \fi]{editor}}{}{\ddt}
+\xpatchbibmacro{editor+others}{\printnames{editor}}{%
+    \printnames[][-\ifnum\value{listtotal}>3 1 \else 3 \fi]{editor}}{}{\ddt}
+\xpatchbibmacro{byauthor}{\printnames[byauthor]{author}}{\printnames[byauthor][-7]{author}}{}{\ddt}
+\xpatchbibmacro{byeditor}{\printnames[byeditor]{editor}}{%
+    \printnames[][-\ifnum\value{listtotal}>3 1 \else 3 \fi]{editor}}{}{\ddt}
+
+% Jeśli jest wydanie, to po tytule nie dajemy przecinka
+\xpatchbibmacro{maintitle+title}{%
+    \usebibmacro{title}%
+}{%
+    \usebibmacro{title}%
+    \iffieldundef{edition}{}{\nopunct}%
+}{}{\ddt}
+
+% Do 10 lokalizacji
+\xpatchbibmacro{institution+location+date}{\printlist{location}}{\printlist[][-10]{location}}{}{\ddt}
+\xpatchbibmacro{organization+location+date}{\printlist{location}}{\printlist[][-10]{location}}{}{\ddt}
+\xpatchbibmacro{location+date}{\printlist{location}}{\printlist[][-10]{location}}{}{\ddt}
+\renewbibmacro*{date}{\printdate\adddot\nopunct}
+% Zmieniamy trochę format
+\renewbibmacro*{publisher+location+date}{
+    \printlist{publisher}%
+    \newunit\newblock
+    \printlist[][-10]{location}%
+    \newunit\newblock
+    \usebibmacro{date}\isdot
+}
+
+% Umieszcza "red." w nawiasie
+\renewbibmacro*{editor+othersstrg}{\addspace \mkbibparens{\bibxstring{editor}}}
+\renewbibmacro*{editorstrg}{\addspace \mkbibparens{\bibxstring{editor}}}
+
+\newbibmacro*{publisher+location}{%
+    \printlist{publisher}%
+    \newunit\newblock
+    \printlist[][-10]{location}%
+}
+
+% Strony przed datą
+\xpatchbibdriver{book}{%
+    \usebibmacro{publisher+location+date}%
+    \newunit\newblock
+    \usebibmacro{chapter+pages}%
+    \newunit
+    \printfield{pagetotal}%
+}{%
+    \usebibmacro{publisher+location}%
+    \newunit\newblock
+    \usebibmacro{chapter+pages}%
+    \newunit
+    \printfield{pagetotal}%
+    \newunit\newblock
+    \usebibmacro{date}%
+}{}{\ddt}
+
+% Przesuwa pole 'note' zaraz po języku tytułu (w praktyce po tytule) w @book
+\xpatchbibdriver{book}{%
+    \printfield{note}%
+    \newunit\newblock
+}{}{}{\ddt}
+\xpatchbibdriver{book}{%
+    \printlist{language}%
+    \newunit\newblock
+}{%
+    \printlist{language}%
+    \newunit\newblock
+    \printfield{note}%
+    \newunit\newblock
+}{}{\ddt}
+
+% Redakcja przed nazwą książki w @inbook
+\xpatchbibdriver{inbook}{%
+    \usebibmacro{bybookauthor}%
+    \newunit\newblock
+    \usebibmacro{maintitle+booktitle}%
+    \newunit\newblock
+    \usebibmacro{byeditor+others}%
+}{%
+    \newunit\newblock
+    \usebibmacro{editor+others}%
+    \newunit\newblock
+    \usebibmacro{maintitle+booktitle}%
+}{}{\ddt}
+
+% Numery po tytule książki w @inbook
+\DeclareFieldFormat[inbook]{booktitle}{\mkbibemph{#1}\nopunct}
+\xpatchbibdriver{inbook}{%
+    \usebibmacro{maintitle+booktitle}%
+}{%
+    \usebibmacro{maintitle+booktitle}%
+    \newunit\newblock
+    \printfield{pages}\clearfield{pages}%
+}{}{\ddt}
+
+\DeclareFieldFormat[article]{journaltitle}{\mkbibemph{#1},\nopunct}
+\DeclareFieldFormat[article]{volume}{\mkbibemph{#1}\nopunct}
+\DeclareFieldFormat[proceedings]{volume}{#1\nopunct}
+\DeclareFieldFormat[inproceedings]{volume}{#1\nopunct}
+\DeclareFieldFormat[article]{number}{(#1)\nopunct}
+\xpatchbibdriver{article}{%
+    \usebibmacro{in:}%
+    \usebibmacro{journal+issuetitle}%
+    \newunit
+    \usebibmacro{byeditor+others}%
+    \newunit
+    \usebibmacro{note+pages}%
+    \newunit\newblock
+}{%
+    \usebibmacro{journal+issuetitle}%
+    \newunit
+    \printfield{pages}%
+    \newunit
+    \usebibmacro{byeditor+others}%
+    \newunit
+    \usebibmacro{date}
+    \newunit
+    \printfield{note}%
+    \newunit\newblock
+}{}{\ddt}
+\xpatchbibmacro{journal+issuetitle}{%
+    \usebibmacro{issue+date}%
+}{%
+    \usebibmacro{issue},%
+}{}{\ddt}
+
+\DeclareFieldFormat[thesis]{type}{\ifbibstring{#1}{\bibcplstring{#1}}{#1}}
+\DeclareNameWrapperFormat*[thesis]{supervisor}{promotor #1}
+\newbibmacro*{institution+location}{
+    \printlist{institution}, \printlist{location}
+}
+\xpatchbibdriver{thesis}{%
+    \newunit
+    \usebibmacro{institution+location+date}%
+    \newunit\newblock
+}{%
+    \newunit\newblock
+    \usebibmacro{institution+location}%
+    \newunit\newblock
+    \printnames{supervisor}%
+    \newunit\newblock
+    \usebibmacro{date}\isdot%
+    \newunit\newblock
+}{}{\ddt}
+
+\DeclareFieldFormat[standard]{title}{\mkbibemph{#1},}
+
+\DeclareFieldFormat[manual]{version}{wer. #1,}
+\DeclareListWrapperFormat[manual]{organization}{#1,}
+%\xpatchbibdriver{manual}{%
+%    \printlist{organization}%
+%    \newunit
+%}{}{}{\ddt}
+\xpatchbibdriver{manual}{%
+    \usebibmacro{author/editor}%
+}{%
+    \usebibmacro{author/editor}%
+    \newunit\newblock
+    \ifnameundef{author}{\ifnameundef{editor}{%
+        \printlist{organization}
+        \clearlist{organization}
+        \newunit
+    }{}} {}%
+}{}{\ddt}
+\xpatchbibdriver{manual}{%
+    \usebibmacro{publisher+location+date}%
+}{%
+    \usebibmacro{date}%
+}{}{\ddt}
+
+\DeclareListWrapperFormat[standard]{organization}{#1,}
+\DeclareBibliographyDriver{standard}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \printfield{indextitle}%
+  \newunit\newblock
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \printlist{organization}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \printfield{type}%
+  \newunit
+  \usebibmacro{institution+location+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit
+  \printfield{pagetotal}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+\DeclareBibliographyDriver{legislation}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \printfield{booktitle}%
+  \newunit\newblock
+  \printfield{number}%
+  \newunit\newblock
+  \printfield{position}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{finentry}}
+\DeclareFieldFormat[legislation]{booktitle}{#1}
+\DeclareFieldFormat[legislation]{number}{nr #1}
+\DeclareFieldFormat[legislation]{position}{poz. #1}
+\DeclareFieldFormat[legislation]{note}{#1}
+
+\DeclareFieldFormat[online]{series}{#1,}
+\DeclareFieldFormat[online]{volume}{nr #1}
+\xpatchbibdriver{online}{%
+    \printfield{version}%
+    \newunit
+}{%
+    \printfield{series}%
+    \newunit\newblock
+    \printfield{volume}%
+    \newunit\newblock
+    \printfield{version}%
+    \newunit
+}{}{\ddt}
+
+\DeclareFieldFormat[inproceedings]{booktitle}{\mkbibemph{#1},}
+\DeclareFieldFormat[inproceedings]{maintitle}{\mkbibemph{#1},}
+\DeclareNameWrapperFormat[inproceedings]{editor}{#1}
+\xpatchbibdriver{inproceedings}{%
+    \usebibmacro{chapter+pages}%
+    \newunit\newblock
+}{}{}{\ddt}
+\xpatchbibdriver{inproceedings}{%
+    \usebibmacro{maintitle+booktitle}%
+    \newunit\newblock
+    \usebibmacro{event+venue+date}%
+    \newunit\newblock
+}{%
+    \usebibmacro{editor+others}%
+    \newunit\newblock
+    \usebibmacro{maintitle+booktitle}%
+    \newunit\newblock
+    \usebibmacro{event+venue+date}%
+    \newunit\newblock
+    \usebibmacro{chapter+pages}%
+    \newunit\newblock
+}{}{\ddt}
+\xpatchbibmacro{event+venue+date}{%
+    \printtext[parens]{%
+        \printfield{venue}%
+        \setunit*{\addcomma\space}%
+    \printeventdate}%
+}{%
+    \printfield{venue}%
+    \setunit*{\addcomma\space}%
+    \printeventdate%
+}{}{\ddt}

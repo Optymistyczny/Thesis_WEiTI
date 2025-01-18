@@ -1,0 +1,16 @@
+[0] Config.pm:308> INFO - This is Biber 2.20
+[1] Config.pm:311> INFO - Logfile is 'main.blg'
+[439] biber-MSWIN64:340> INFO - === 
+[593] Biber.pm:420> INFO - Reading 'main.bcf'
+[1167] Biber.pm:994> INFO - Found 27 citekeys in bib section 0
+[1242] Biber.pm:4463> INFO - Processing section 0
+[1312] Biber.pm:4654> INFO - Looking for bibtex file 'bibliografia.bib' for section 0
+[1617] bibtex.pm:1713> INFO - LaTeX decoding ...
+[1885] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliografia.bib'
+[2481] UCollate.pm:68> INFO - Overriding locale 'pl-PL' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[2482] UCollate.pm:68> INFO - Overriding locale 'pl-PL' defaults 'variable = shifted' with 'variable = non-ignorable'
+[2482] Biber.pm:4283> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'pl-PL'
+[2569] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[2617] bbl.pm:779> INFO - Output to main.bbl
+[2618] Biber.pm:131> WARN - ISBN '978-83-659-4212-5' in entry 'Kurczab2016' is invalid - run biber with '--validate_datamodel' for details.
+[2618] Biber.pm:133> INFO - WARNINGS: 1

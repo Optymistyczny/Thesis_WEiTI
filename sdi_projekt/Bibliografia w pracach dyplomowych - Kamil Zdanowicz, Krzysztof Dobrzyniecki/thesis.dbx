@@ -1,0 +1,9 @@
+% Źródło: https://tex.stackexchange.com/a/184878
+\ProvidesFile{thesis.dbx}[pole promotora dla prac naukowych]
+\RequireBiber[3]
+
+\DeclareDatamodelFields[type=list,datatype=name]{supervisor}
+\DeclareDatamodelEntryfields[thesis]{supervisor}
+
+\DeclareDatamodelFields[type=field,datatype=literal]{position}
+\DeclareDatamodelEntryfields[legislation]{position}

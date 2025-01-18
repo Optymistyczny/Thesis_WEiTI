@@ -1,0 +1,203 @@
+\part{Analiza stanu wiedzy i dobór narzędzi}{I}
+% \addcontentsline{toc}{part}{Część I.\hspace{5pt}Analiza stanu wiedzy i dobór narzędzi} 
+
+\noindent \lipsum[1-5]
+\clearpage\section{Istniejące rozwiązania}
+\noindent \lipsum[2]
+
+ % Przykładowy obrazek
+\begin{figure}[!h]
+    % Wyrównanie obrazka, szerokość i plik
+    % Zamiast width można też użyć height, etc.
+    \centering \includegraphics[width=0.5\linewidth]{logopw.png}
+    % Podpis umieszczamy pod obrazkiem
+    % znacznik \caption służy również do wygenerowania numeru obrazka
+    
+    \caption{Bardzo długi podpis.\lipsum[1]}
+    % \label pozwala odwołać się do obrazka w innych miejscach za pomocą \ref
+    % odwołanie \ref renderuje się jako numer obrazka,
+    % dlatego zawsze najpierw używaj \caption a potem \label
+    \label{fig:tradycyjne-logo-pw}
+\end{figure}
+
+% \ref wyrenderuje się jako 'Reference to image 1.1'
+\lipsum[2] Reference to image \ref{fig:tradycyjne-logo-pw}.
+
+% Przypis dolny \footnote
+\lipsum[4] Lorem ipsum dolor sit amet\footnote{Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.}, consectetur adipiscing elit.
+
+\subsection{Przegląd urządzeń o podobnym zastosowaniu}
+
+\noindent Poniżej znajdują się przykładowe odwołania do bibliografii. 
+
+%Ta lista jest długa. Zmnieszamy czcionkę i odstępy.
+% \begingroup
+
+\begin{itemize} \footnotesize
+    \item książka (jako całość) z minimum wymaganych pól \cite{Gorski2023},
+    \item książka (jako całość) z kilkoma autorami \cite{Kurczab2016},
+    \item książka (jako całość) z informacją o wydaniu oraz ISBN \cite{Rowling2000},
+    \item książka (jako całość) z informacją o tłumaczu. \cite{AlKhalili2022},
+    \item rodzdział książki bez wydzielonego autorstwa \cite{Smith2018},
+    \item rodzdział książki bez wydzielonego autorstwa \cite{Peterson2019},
+    \item rozdział książki z autorami rozdziału \cite{Kraus2010},
+    \item rozdział książki z autorami rozdziału \cite{Isidori2023},
+    \item rozdział książki z autorami rozdziału \cite{Gregerson2010},
+    \item artykuł w czasopiśmie \cite{Nowak2023},
+    \item artykuł w czasopiśmie \cite{Xu2023},
+    \item artykuł w czasopiśmie \cite{Mashatan2007},
+    \item artykuł w czasopiśmie \cite{Hwang2006},
+    \item artykuł w czasopiśmie \cite{Joye2007},
+    \item praca dyplomowa \cite{Cwik2018},
+    \item praca dyplomowa \cite{Marszalek2023},
+    \item praca dyplomowa \cite{Urbanski2023},
+    \item praca dyplomowa \cite{Otto2004},
+    \item dokumentacja techniczna \cite{LPC2212},
+    \item dokumentacja techniczna \cite{NIST-SP-800-22},
+    \item standard \cite{FIPS140-2},
+    \item akt prawny \cite{ust2001-09-18},
+    \item publikacja internetowa \cite{Schneier2017},
+    \item publikacja internetowa \cite{Craddock2017},
+    \item publikacja internetowa \cite{MatlabPerformance2015},
+    \item materiały konferencyjne \cite{Duckworth2019},
+    \item materiały konferencyjne \cite{Jun2006}.
+\end{itemize}
+% \endgroup
+
+\subsection{Wady i zalety obecnych rozwiązań}
+\noindent Poniżej znajdują się przykłady list. Listy punktowe używane są do wymieniania elementów, 
+nieocechowanych priorytetem. Według zaleceń Rektora Politechniki Warszawskiej, w pracach
+dyplomowych zalecane jest, aby wyliczenia punktowe symbolizowane były kropką
+lub myślnikiem (--).
+
+\noindent Listy punktowe -- (przykład z "kropką"):
+\begin{itemize}
+    \item pierwszy punkt,
+    \item drugi punkt,
+    \item trzeci punkt.
+\end{itemize}
+
+\noindent Listy punktowe. Przykład z „--” oraz zagnieżdżeniem:
+\begin{itemize}[label=---]
+    \item[--] Pierwszy punkt z myślnikiem.
+    \item[--] Drugi punkt z myślnikiem.
+    \item[--] Trzeci punkt z myślnikiem.
+    \begin{itemize}
+        \item[--] Drugi pierwszy punkt z myślnikiem.
+        \item[--] Drugi drugi punkt z myślnikiem.
+        \item[--] Drugi trzeci punkt z myślnikiem.
+        \begin{itemize}
+            \item[--] Pierwszy drugi pierwszy punkt z myślnikiem.
+            \item[--] Drugi drugi drugi punkt z myślnikiem.
+            \item[--] Trzeci drugi trzeci punkt z myślnikiem.
+        \end{itemize}    
+    \end{itemize} 
+    
+    \item[--] Trzeci punkt z myślnikiem.
+\end{itemize}
+
+% Lista punktowana
+% Parametr label ustawia symbol punktora
+\noindent Należy mieć na uwadze, że istnieje wiele różych "kresek", które wyglądają jak 
+myślnik, pachną jak myślnik, ale myślnikiem nie są. Oto one:
+\begin{itemize}[label=--]
+    \item dywiz "-",
+    \item myślnik lub półpauza "--",
+    \item pauza "---"
+    \item znak minus $-$
+\end{itemize}   
+
+\noindent Każdy z tych znaków ma swoje unikalne przeznaczenie. 
+
+\noindent Przykładowa tabela
+\begin{table}[H] \centering
+    \caption{Opis wyprowadzeń i sygnałów}
+    \label{tab:base_pins}
+    \begin{tabular}{l l l l}
+        \toprule[2pt]
+        \textbf{\uline{Pin}}     &  \textbf{\uline{Sygnał}}&   \textbf{\uline{Typ}} &  \textbf{\uline{Przeznacznie}}             \\
+        PB4                      & DCx                     & push-pull              & LCD: Wybór dane / komenda                  \\  
+        PB6                      & LCD\_RES                & push-pull              & LCD: reset                                 \\ 
+        PA2                      & DIM                     & PWM                    & LCD: kontrola jasności ekranu              \\ 
+        PA3                      & BUZZ                    & push-pull              & Sygnał sterujący brzęczykiem               \\ 
+        PA4                      & SPI\_NSS                & alternatywny           & LCD: zezwolenie na komunikację             \\ 
+        PA5                      & SPI\_SCK                & alternatywny           & LCD: sygnał zegarowy                       \\ 
+        PA6                      & SPI\_MISO               & alternatywny           & LCD: dane przychodządze                    \\ 
+        PA7                      & SPI\_MOSI               & alternatywny           & LCD: dane wychodzące                       \\ 
+        PH3-BOOT0                & ---                     & wejście                & wybór trybu wybudzenia                     \\ 
+        RFI\_P                   & RFI\_P                  & alternatywny           & RF: wejście P                              \\ 
+        RFI\_N                   & RFI\_N                  & alternatywny           & RF: wejście N                              \\ 
+        PA10                     & LED2                    & push-pull              & sterowanie diodą 2                         \\ 
+        PA11                     & SUBGHZ\_RES             & alternatywny           & RF: sygnał reset radia                     \\ 
+        PA12                     & LED1                    & push-pull              & sterowanie diodą 1                         \\ 
+        PA13                     & SWDIO                   & alternatywny           & Progrator: dane                            \\ 
+        PA14                     & SWCLK                   & alternatywny           & Progrator: sygnał zegarowy                 \\ 
+        PB0-VDD\_TCXO            & VDDTCXO                 & alternatywny           & TCXO: pin zasilający                       \\ 
+        OSC\_IN                  & ---                     & alternatywny           & TCXO: sygnał zegarowy z TCXO               \\ 
+        \midrule \multicolumn{3}{r}{\textbf{Suma:}} & 15,37 zł \\
+        \bottomrule[2pt]
+    \end{tabular}
+\end{table}
+
+\noindent Listy wyliczeniowe. Stosowane są w przypadku uporządkowanych lub upriorytetowanych elementów. Zazwyczaj symbolizujemy je liczbami arabskimi, rzymskimi czy też literami.
+\begin{enumerate}
+    \item Punkt pierwszy.
+    \item Punkt drugi.
+    \item Punkt trzeci.
+\end{enumerate}
+\noindent Listy definicyjne:
+Używane są do objaśniania wszelkiego rodzaju pojęć,  akronimów czy też symboli, występują w dwóch
+wariacjach -- z wcięciami w formie zdaniowej lub z wyrównaniem kolumnowym (w postaci tabeli).
+W tym szablonie jest jednak odrębne miejsce na umieszczenie własnych akronimów i symboli. Znajduje
+się ono w pliku main.tex.
+
+\begin{description}
+    \item[Kot] ma 4 nogi, miauczy i bardzo dużo śpi w ciągu dnia.
+    \item[Pies] to czteronożny zwierz, który szczeka, towarzyszy człowiekowi w 
+   spacerach oraz aportuje piłki.
+    \item[Świnia] ma 4 nogi, kwiczy i jest zwykle zwierzęciem chlewnym, które jest 
+   czasem wypowadzane na spacery.
+\end{description}
+\noindent Ogólne zasady tworzenia list:
+\begin{itemize}
+    \item Każda lista powinna zawierać co najmniej 3 elementy.
+    \item Należy unikać zbyt długich wyliczeń lub wypunktowań, w takim wypadku rozważyć podzielenie 
+    na mniejsze listy lub podlisty.
+    \item Elementy wyliczeń, które nie przybierają postaci samodzielnych zdań rozpoczynamy małą literą.
+    \item Całą listę, tj. ostatni element wyliczania, zawsze kończymy kropką.
+\end{itemize}
+
+
+\clearpage\section{Normy i standardy techniczne}
+\noindent \lipsum[2]
+
+    \subsection{Wymagania prawne}
+    \noindent \lipsum[2]
+
+    \subsection{Standardy projektowe}
+    \noindent \lipsum[2]
+
+\clearpage\section{Określenie problemu}
+    \noindent \lipsum[2]
+
+\clearpage\section{Dobór narzędzi}
+    \noindent \lipsum[2]
+
+    \subsection{Projekt 3D}
+        \noindent \lipsum[2]
+
+    \subsection{Schematy elektryczne}
+        \noindent \lipsum[2]
+        
+    \subsection{Środowisko symulacyjne}
+        \noindent \lipsum[2]
+
+
+\clearpage\section{Wymagania funkcjonalne i techniczne}
+    \noindent \lipsum[2]
+
+    \subsection{Specyfikacja funkcjonalna}
+        \noindent \lipsum[2]
+
+    \subsection{Ograniczenia techniczne}
+        \noindent \lipsum[2]

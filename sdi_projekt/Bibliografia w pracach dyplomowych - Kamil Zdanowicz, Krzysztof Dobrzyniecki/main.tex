@@ -1,0 +1,76 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{csquotes}
+\usepackage[T1]{fontenc}
+
+\usepackage[
+datamodel=thesis,
+style=numeric,
+giveninits=true,
+sorting=none,       % w pracy usunąć żeby sortował po nazwisku
+]{biblatex}
+
+\addbibresource{bibliografia.bib}
+
+\input{biblatex-config.tex}
+
+\begin{document}
+
+Książka (jako całość) z minimum wymaganych pól \cite{Gorski2023}.
+
+Książka (jako całość) z kilkoma autorami \cite{Kurczab2016}.
+
+%Książka (jako całość) z informacją o wydaniu oraz ISBN \cite{Rowling2000}
+
+Książka (jako całość) z informacją o tłumaczu. \cite{AlKhalili2022}
+
+Rodzdział książki bez wydzielonego autorstwa \cite{Smith2018}.
+
+Rodzdział książki bez wydzielonego autorstwa \cite{Peterson2019}.
+
+Rozdział książki z autorami rozdziału \cite{Kraus2010}.
+
+Rozdział książki z autorami rozdziału \cite{Isidori2023}.
+
+Rozdział książki z autorami rozdziału \cite{Gregerson2010}.
+
+Artykuł w czasopiśmie \cite{Nowak2023}.
+
+Artykuł w czasopiśmie \cite{Xu2023}.
+
+Artykuł w czasopiśmie \cite{Mashatan2007}.
+
+Artykuł w czasopiśmie \cite{Hwang2006}.
+
+Artykuł w czasopiśmie \cite{Joye2007}.
+
+Praca dyplomowa \cite{Cwik2018}.
+
+Praca dyplomowa \cite{Marszalek2023}.
+
+Praca dyplomowa \cite{Urbanski2023}.
+
+Praca dyplomowa \cite{Otto2004}.
+
+Dokumentacja techniczna \cite{LPC2212}.
+
+Dokumentacja techniczna \cite{NIST-SP-800-22}.
+
+Standard \cite{FIPS140-2}.
+
+Akt prawny \cite{ust2001-09-18}.
+
+Publikacja internetowa \cite{Schneier2017}.
+
+Publikacja internetowa \cite{Craddock2017}.
+
+Publikacja internetowa \cite{MatlabPerformance2015}.
+
+Materiały konferencyjne \cite{Duckworth2019}.
+
+Materiały konferencyjne \cite{Jun2006}.
+
+\printbibliography
+
+\end{document}
