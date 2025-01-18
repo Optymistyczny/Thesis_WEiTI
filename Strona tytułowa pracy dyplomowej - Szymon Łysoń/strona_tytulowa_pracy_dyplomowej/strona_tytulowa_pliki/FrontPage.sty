@@ -1,0 +1,197 @@
+\ProvidesPackage{strona_tytulowa_pliki/FrontPage}
+\RequirePackage{strona_tytulowa_pliki/weiti}
+%definicja funckji używanych do wprowadzania danych
+\newcommand{\instytut}[1]{
+    \newcommand{\@instytut}{#1}
+}
+\newcommand{\kierunek}[1]{
+    \newcommand{\@kierunek}{#1}
+}
+\newcommand{\specjalnosc}[1]{
+    \newcommand{\@specjalnosc}{#1}
+}
+\newcommand{\album}[1]{
+    \newcommand{\@album}{#1}
+}
+\newcommand{\promotor}[1]{
+    \newcommand{\@promotor}{#1}
+}
+%definicie fontów
+\ifLuaTeX % Jeżeli używa się LuaLaTeX, wykorzystywana jest biblioteka fontenc
+    \def\fontPath{strona_tytulowa_pliki/}
+    \newfontfamily{\adagioSlabFont}{AdagioSlab}[
+        Extension = .ttf,
+        UprightFont = *R,
+        ItalicFont = *L, %italic font is light version of it
+        Path = \fontPath
+    ]
+    \newfontfamily{\helveticaFont}{Helvetica}[
+        Extension = .ttf,
+        UprightFont = *R,
+        ItalicFont = *L, %italic font is light version of it
+        Path = \fontPath
+    ]
+\else % Jeżeli używa się pdfLaTeX, wymagana jest ręczna deficja fontów
+    \pdfmapline{+HelveticaL <strona_tytulowa_pliki/HelveticaL.ttf <T1-WGL4.enc}
+    \newcommand\HelveticaL[1]{{\usefont{T1}{HelveticaL}{m}{n} #1 }}
+    \pdfmapline{+AdagioSlabR < strona_tytulowa_pliki/AdagioSlabR.ttf <T1-WGL4.enc}
+    \newcommand\AdagioSlabR[1]{{\usefont{T1}{AdagioSlabR}{m}{n} #1 }}
+    \pdfmapline{+AdagioSlabL < strona_tytulowa_pliki/AdagioSlabL.ttf <T1-WGL4.enc}
+    \newcommand\AdagioSlabL[1]{{\usefont{T1}{AdagioSlabL}{m}{n} #1 }}
+\fi
+
+\newcommand{\typPracy}[1]{
+     \ifthenelse{\equal{#1}{i}}
+        {\def\typPracyTekst{inźynierska}}{      
+        \ifthenelse{\equal{#1}{m}}
+            {\def\typPracyTekst{magisterska}}{\def\typPracyTekst{Wprowadz i lub m jako typ pracy}}}
+}
+
+\def\showOpiekun{0}
+\def\showKonsultacje{0}
+\def\showDrugiAutor{0}
+\def\showDrugiAlbum{0}
+
+\newcommand{\opiekun}[1]{
+    \newcommand{\@opiekun}{#1}
+    \def\showOpiekun{1}
+}
+
+\newcommand{\konsultacje}[1]{
+    \newcommand{\@konsultacje}{#1}
+    \def\showKonsultacje{1}
+}
+
+\newcommand{\DrugiAutor}[1]{
+    \newcommand{\@DrugiAutor}{#1}
+    \def\showDrugiAutor{1}
+}
+\newcommand{\DrugiAlbum}[1]{
+    \newcommand{\@DrugiAlbum}{#1}
+    \def\showDrugiAlbum{1}
+}
+% Poniższa funkcja składa całą stronę z różnych elementów
+\let\oldmaketitle\maketitle
+\renewcommand{\maketitle}{
+    \thispagestyle{empty}% wyłączenie numeracji strony i nagłówków dla tej strony
+    \linespread{1.2} %wieksze odstępy pomiędzy linijkami, zwiększa odstęp bazowy o 1.2
+    \begin{center}
+        \universityAndFaculty 
+        \vskip 1.3cm % przerwa pionowa
+        % \par
+        \ifLuaTeX
+            %fontsize{Rozmiar fontu}{Rozmiar bazowy odstępu pionowego}
+%            \fontsize{12pt}{0pt}\helveticaFont{\textit{Instytut \@instytut}}
+            \fontsize{12pt}{0pt}\helveticaFont{\textit{\@instytut}}
+        \else 
+%            \fontsize{12pt}{0pt}\HelveticaL{Instytut \@instytut}
+            \fontsize{12pt}{0pt}\HelveticaL{\@instytut}
+        \fi
+        % \par
+        \vskip 1.5cm
+
+            \ifLuaTeX
+                \fontsize{43pt}{0pt}\adagioSlabFont{\textit{Praca dyplomowa}}
+                \vskip 0.4cm    % regulacja interlinii w tytule pracy 
+                \fontsize{43pt}{0pt}\adagioSlabFont{\textit{\typPracyTekst}}
+            \else 
+                \fontsize{43pt}{0pt}\AdagioSlabL{\textit{Praca dyplomowa}}
+                \vskip 0.4cm    % regulacja interlinii w tytule pracy 
+                 \fontsize{43pt}{0pt}\AdagioSlabL{\typPracyTekst}
+            \fi
+
+        % \par
+        \vskip 0.6cm
+            \ifLuaTeX
+                \fontsize{12pt}{14pt}\helveticaFont{\textit{ 
+                na~kierunku \@kierunek \\
+                w~specjalności \@specjalnosc \\}}
+            \else 
+                \fontsize{12pt}{14pt}\HelveticaL{ 
+                na~kierunku \@kierunek \\
+                w~specjalności \@specjalnosc \\}
+            \fi
+        \vfill
+            \ifLuaTeX
+                \fontsize{14pt}{17pt}\helveticaFont{\@title} 
+            \else 
+                \fontsize{14pt}{17pt}\fontfamily{phv}\selectfont{\@title}
+            \fi
+        \par
+        \vfill
+        \vfill
+            \ifLuaTeX
+                \fontsize{21pt}{0pt}\helveticaFont{\@author}
+            \else 
+                \fontsize{21pt}{0pt}\fontfamily{phv}\selectfont{\@author}
+            \fi
+            \vskip 0.3cm
+            \ifLuaTeX
+                \fontsize{12pt}{0pt}\helveticaFont{\textit{Numer~albumu \@album}}
+            \else 
+                 \fontsize{12pt}{0pt}\HelveticaL{Numer~albumu \@album}
+            \fi
+        \ifthenelse{\equal{\showDrugiAutor}{1}}{ % jeżeli zdefiniowano drugiego autora
+         \vfill
+         \vfill
+            \ifLuaTeX
+                \fontsize{21pt}{0pt}\helveticaFont{\@DrugiAutor}
+            \else 
+                \fontsize{21pt}{0pt}\fontfamily{phv}\selectfont{\@DrugiAutor}
+            \fi
+            \vskip 0.3cm
+            \ifLuaTeX
+                \fontsize{12pt}{0pt}\helveticaFont{\textit{Numer~albumu \@DrugiAlbum }}
+            \else 
+                 \fontsize{12pt}{0pt}\HelveticaL{Numer~albumu \@DrugiAlbum }
+            \fi
+        }
+        {}%jeżeli nie zdefiniowano drugiego autora
+        \vfill
+         \vfill
+        \ifLuaTeX
+            \fontsize{12pt}{14pt}\helveticaFont{\textit{promotor\\}}
+            \fontsize{12pt}{14pt}\helveticaFont{\@promotor}
+        \else 
+            \fontsize{12pt}{14pt}\HelveticaL{promotor\\}
+            \fontsize{12pt}{14pt}\fontfamily{phv}\selectfont
+                {\@promotor}
+        \fi
+        \ifthenelse{\equal{\showOpiekun}{1}}{
+        \vskip 0.4cm %sztywny odstęp między promotorem a opiekunem i konsultacjami
+        \ifLuaTeX
+            \fontsize{12pt}{14pt}\helveticaFont{\textit{opiekun\\}}
+            \fontsize{12pt}{14pt}\helveticaFont{\@opiekun}
+        \else 
+            \fontsize{12pt}{14pt}\HelveticaL{opiekun\\}
+            \fontsize{12pt}{14pt}\fontfamily{phv}\selectfont
+            {\@opiekun}
+            
+        \fi
+       }
+       {}% jeżeli nie zdefiniowano opiekuna
+        \ifthenelse{\equal{\showKonsultacje}{1}}{
+        \vskip 0.4cm             %sztywny odstęp między promotorem a opiekunekm i konsultacjami
+        \ifLuaTeX
+            \fontsize{12pt}{14pt}\helveticaFont{\textit{konsultacje\\}}
+            \fontsize{12pt}{14pt}\helveticaFont{\@konsultacje}
+        \else 
+            \fontsize{12pt}{14pt}\HelveticaL{konsultacje\\}
+            \fontsize{12pt}{14pt}\fontfamily{phv}\selectfont
+            {\@konsultacje}
+        \fi
+       }
+       {}
+         % \vskip  0pt plus 3fil\relax
+        \vfill
+        \vfill
+        \vfill
+        \ifLuaTeX
+            \fontsize{12pt}{12pt}\helveticaFont{\textit{WARSZAWA \@date}}
+        \else 
+            \fontsize{12pt}{12pt}\HelveticaL{WARSZAWA \@date}
+        \fi
+        \clearpage  
+    \end{center}
+}
+\makeatother

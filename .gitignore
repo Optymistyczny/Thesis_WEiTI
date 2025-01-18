@@ -1,0 +1,5 @@
+# Ignoruj tylko katalog "katalog_do_wykluczenia/"
+exclude/
+
+# Upewnij się, że wszystko inne jest śledzone
+!*

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.12.22)  18 JAN 2025 21:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.12.22)  18 JAN 2025 21:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1574,7 +1574,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 ]
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 188.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 190.
  (C:\Users\kubas\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
@@ -1583,34 +1583,34 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Overfull \hbox (44.19472pt too wide) in paragraph at lines 189--189
+Overfull \hbox (44.19472pt too wide) in paragraph at lines 191--191
 []\T1/futs/m/n/10.95 (-20) Isidori, A., Non-li-near Con-trol The-ory for Au-to-ma-tion, W: S. Y. Nof (red.), |   []
  []
 
 
-Overfull \hbox (95.19437pt too wide) in paragraph at lines 189--189
+Overfull \hbox (95.19437pt too wide) in paragraph at lines 191--191
 []\T1/futs/m/n/10.95 (-20) Kraus, T. i Wolf, H., Tem-pla-ted Self-Assembly of Par-tic-les, W: B. Bhu-shan (red.), |   []
  []
 
 
-Overfull \hbox (79.35359pt too wide) in paragraph at lines 189--189
+Overfull \hbox (79.35359pt too wide) in paragraph at lines 191--191
 []\T1/futs/m/n/10.95 (-20) Kurczab, M., Kur-czab, E. i ‘wida, E., |   []
  []
 
 
 
 [43]
-Overfull \hbox (61.0935pt too wide) in paragraph at lines 189--189
+Overfull \hbox (61.0935pt too wide) in paragraph at lines 191--191
 []\T1/futs/m/n/10.95 (-20) Smith, J. M., Vo-lu-me-tric Pro-per-ties of Pure Flu-ids, W: |   []
  []
 
 
-Overfull \hbox (211.79768pt too wide) in paragraph at lines 189--189
+Overfull \hbox (211.79768pt too wide) in paragraph at lines 191--191
 []\T1/futs/m/n/10.95 (-20) Xu, P., Zhu, X. i Cli-fton, D. A., Mul-ti-mo-dal Le-ar-ning with Trans-for-mers: A Su-rvey, |   [],
  []
 
 
-Overfull \hbox (220.60901pt too wide) in paragraph at lines 189--189
+Overfull \hbox (220.60901pt too wide) in paragraph at lines 191--191
 \T1/futs/m/n/10.95 (-20) For Ad-dress Bus Pro-tec-tion, W: |   [],
  []
 
@@ -1685,13 +1685,13 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Here is how much of TeX's memory you used:
  30390 strings out of 475773
  534085 string characters out of 5775940
- 1671246 words of memory out of 5000000
+ 1672246 words of memory out of 5000000
  51871 multiletter control sequences out of 15000+600000
  736489 words of font info for 467 fonts, out of 8000000 for 9000
  34 hyphenation exceptions out of 8191
  123i,15n,121p,1205b,2286s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\kubas\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk><./strona_tytulowa_pliki/AdagioSlabL.ttf><./strona_tytulowa_pliki/HelveticaL.ttf><./strona_tytulowa_pliki/AdagioSlabR.ttf><C:/Users/kubas/AppData/Local/Programs/MiKTeX/fonts/type1/public/fourier/fourier-alt.pfb><C:/Users/kubas/AppData/Local/Programs/MiKTeX/fonts/type1/public/fourier/fourier-mex.pfb><C:/Users/kubas/AppData/Local/Programs/MiKTeX/fonts/type1/public/fourier/fourier-ms.pfb><C:/Users/kubas/AppData/Local/Programs/MiKTeX/fonts/type1/adobe/utopia/putb8a.pfb><C:/Users/kubas/AppData/Local/Programs/MiKTeX/fonts/type1/adobe/utopia/putr8a.pfb><C:/Users/kubas/AppData/Local/Programs/MiKTeX/fonts/type1/adobe/utopia/putri8a.pfb><C:/Users/kubas/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on main.pdf (51 pages, 679414 bytes).
+Output written on main.pdf (51 pages, 679026 bytes).
 PDF statistics:
  774 PDF objects out of 1000 (max. 8388607)
  182 named destinations out of 1000 (max. 500000)
