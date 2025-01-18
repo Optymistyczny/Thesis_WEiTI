@@ -1,3 +1,0 @@
-\ProvidesFile{t1AdagioSlabR.fd}
-\DeclareFontFamily{T1}{AdagioSlabR}{}
-\DeclareFontShape{T1}{AdagioSlabR}{m}{n}{<-> AdagioSlabR}{}

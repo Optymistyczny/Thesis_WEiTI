@@ -85,12 +85,16 @@
 \RequirePackage{booktabs}
 \RequirePackage{etoolbox}
 \RequirePackage{subcaption} % do podwójnych tabel
-\RequirePackage{ulem} % do podkreślania tekstu - użyte w tabeli
+
 \RequirePackage{float}
 % \usepackage{etoolbox} % Pakiet do modyfikacji zachowania poleceń
 %----------------------------
 % Parametrized dependencies
 %----------------------------
+\RequirePackage % do podkreślania tekstu - użyte w tabeli
+[
+    normalem
+]{ulem}
 % Bibliography in biber
 \RequirePackage[
     backend=biber,
@@ -209,7 +213,7 @@
     \usepackage{strona_tytulowa_pliki/FrontPage}
     % Zmniejszenie marginesów dla podpisów
     \captionsetup{
-        width=1.15\textwidth, % Większa szerokość podpisu
+        width=0.9\textwidth, % Większa szerokość podpisu
         font=small, % Zmniejszony rozmiar czcionki
         % justification=centering% – wyrównanie do środka (domyślne)
         % justification=justified% – pełne wyrównanie do obu stron
@@ -217,7 +221,7 @@
         % justification=raggedright% – wyrównanie do lewej strony
         justification=justified, % Justowanie do lewej
         format=hang, % Formatowanie z wiszącym wcięciem
-        % indention=-30pt % Ujemne wcięcie pierwszego wiersza
+        indention=-30pt % Ujemne wcięcie pierwszego wiersza
     }
     \makeatletter
     \renewcommand{\part}[2]{%
@@ -403,19 +407,24 @@
         Załącznik
 }
 
+% \let\standardappendix\appendix
+% \renewcommand\appendix[1]{
+%     \refstepcounter{section}
+%     \tocless{\section*}{\@appendixtitle~\arabic{section}.\hspace*{2.5em} #1}
+%     \addcontentsline{app}{subsection}{\hspace*{0em}\arabic{section}.\hspace*{0.5em} #1}
+% }
 \let\standardappendix\appendix
 \renewcommand\appendix[1]{
     \refstepcounter{section}
-    \tocless{\section*}{\@appendixtitle~\arabic{section}.\hspace*{2.5em} #1}
-    \addcontentsline{app}{subsection}{\hspace*{0em}\arabic{section}.\hspace*{0.5em} #1}
+    \renewcommand\thesection{\Alph{section}} % Numeracja literowa
+    \tocless{\section*}{\@appendixtitle~\thesection\hspace*{2.5em} #1}
+    \addcontentsline{app}{subsection}{\hspace*{0em}\thesection.\hspace*{0.5em} #1}
 }
-
 \newcommand\listofappendicestoc{
     \section*{Spis załączników}\@starttoc{app}
     \standardappendix
     \renewcommand{\thesection}{\arabic{section}}
 }
-
 \setstretch{1.15}
 % List formatting
 % Odstępy między tekstem a listami, marginesami oraz czcionki

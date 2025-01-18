@@ -1,9 +1,9 @@
 \part{Analiza stanu wiedzy i dobór narzędzi}{I}
 % \addcontentsline{toc}{part}{Część I.\hspace{5pt}Analiza stanu wiedzy i dobór narzędzi} 
 
-\noindent \lipsum[1-5]
+\noindent\lipsum[1-3]
 \clearpage\section{Istniejące rozwiązania}
-\noindent \lipsum[2]
+\noindent\lipsum[1-3]
 
  % Przykładowy obrazek
 \begin{figure}[!h]
@@ -13,7 +13,8 @@
     % Podpis umieszczamy pod obrazkiem
     % znacznik \caption służy również do wygenerowania numeru obrazka
     
-    \caption{Bardzo długi podpis.\lipsum[1]}
+    \caption{Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus
+    elit, vestibulum ut, placerat ac, adipiscing vitae, felis}
     % \label pozwala odwołać się do obrazka w innych miejscach za pomocą \ref
     % odwołanie \ref renderuje się jako numer obrazka,
     % dlatego zawsze najpierw używaj \caption a potem \label
@@ -21,7 +22,7 @@
 \end{figure}
 
 % \ref wyrenderuje się jako 'Reference to image 1.1'
-\lipsum[2] Reference to image \ref{fig:tradycyjne-logo-pw}.
+\lipsum[1-3] Reference to image \ref{fig:tradycyjne-logo-pw}.
 
 % Przypis dolny \footnote
 \lipsum[4] Lorem ipsum dolor sit amet\footnote{Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.}, consectetur adipiscing elit.
@@ -70,14 +71,14 @@ nieocechowanych priorytetem. Według zaleceń Rektora Politechniki Warszawskiej,
 dyplomowych zalecane jest, aby wyliczenia punktowe symbolizowane były kropką
 lub myślnikiem (--).
 
-\noindent Listy punktowe -- (przykład z "kropką"):
+\noindent Listy punktowe -- (przykład z „kropką”):
 \begin{itemize}
     \item pierwszy punkt,
     \item drugi punkt,
     \item trzeci punkt.
 \end{itemize}
 
-\noindent Listy punktowe. Przykład z „--” oraz zagnieżdżeniem:
+\noindent Listy punktowe. Przykład z „--” oraz zagnieżdżeniem: 
 \begin{itemize}[label=---]
     \item[--] Pierwszy punkt z myślnikiem.
     \item[--] Drugi punkt z myślnikiem.
@@ -98,43 +99,30 @@ lub myślnikiem (--).
 
 % Lista punktowana
 % Parametr label ustawia symbol punktora
-\noindent Należy mieć na uwadze, że istnieje wiele różych "kresek", które wyglądają jak 
+\noindent Należy mieć na uwadze, że istnieje wiele różych „kresek”, które wyglądają jak 
 myślnik, pachną jak myślnik, ale myślnikiem nie są. Oto one:
 \begin{itemize}[label=--]
-    \item dywiz "-",
-    \item myślnik lub półpauza "--",
-    \item pauza "---"
-    \item znak minus $-$
+    \item dywiz „-”
+    \item myślnik lub półpauza „--”,
+    \item pauza „---”
+    \item znak minus „$-$”
 \end{itemize}   
+Każdy z tych znaków ma swoje unikalne przeznaczenie. 
 
-\noindent Każdy z tych znaków ma swoje unikalne przeznaczenie. 
-
-\noindent Przykładowa tabela
 \begin{table}[H] \centering
-    \caption{Opis wyprowadzeń i sygnałów}
-    \label{tab:base_pins}
-    \begin{tabular}{l l l l}
+    \caption{Przykładowa tabela w stylu IEEE}
+    \label{tab:IEEE}
+    \begin{tabular}{c c c c c}
         \toprule[2pt]
-        \textbf{\uline{Pin}}     &  \textbf{\uline{Sygnał}}&   \textbf{\uline{Typ}} &  \textbf{\uline{Przeznacznie}}             \\
-        PB4                      & DCx                     & push-pull              & LCD: Wybór dane / komenda                  \\  
-        PB6                      & LCD\_RES                & push-pull              & LCD: reset                                 \\ 
-        PA2                      & DIM                     & PWM                    & LCD: kontrola jasności ekranu              \\ 
-        PA3                      & BUZZ                    & push-pull              & Sygnał sterujący brzęczykiem               \\ 
-        PA4                      & SPI\_NSS                & alternatywny           & LCD: zezwolenie na komunikację             \\ 
-        PA5                      & SPI\_SCK                & alternatywny           & LCD: sygnał zegarowy                       \\ 
-        PA6                      & SPI\_MISO               & alternatywny           & LCD: dane przychodządze                    \\ 
-        PA7                      & SPI\_MOSI               & alternatywny           & LCD: dane wychodzące                       \\ 
-        PH3-BOOT0                & ---                     & wejście                & wybór trybu wybudzenia                     \\ 
-        RFI\_P                   & RFI\_P                  & alternatywny           & RF: wejście P                              \\ 
-        RFI\_N                   & RFI\_N                  & alternatywny           & RF: wejście N                              \\ 
-        PA10                     & LED2                    & push-pull              & sterowanie diodą 2                         \\ 
-        PA11                     & SUBGHZ\_RES             & alternatywny           & RF: sygnał reset radia                     \\ 
-        PA12                     & LED1                    & push-pull              & sterowanie diodą 1                         \\ 
-        PA13                     & SWDIO                   & alternatywny           & Progrator: dane                            \\ 
-        PA14                     & SWCLK                   & alternatywny           & Progrator: sygnał zegarowy                 \\ 
-        PB0-VDD\_TCXO            & VDDTCXO                 & alternatywny           & TCXO: pin zasilający                       \\ 
-        OSC\_IN                  & ---                     & alternatywny           & TCXO: sygnał zegarowy z TCXO               \\ 
-        \midrule \multicolumn{3}{r}{\textbf{Suma:}} & 15,37 zł \\
+         & \multicolumn{2}{c}{\textbf{\uline{Cell}}}& \multicolumn{2}{c}{\textbf{\uline{Cell}}}   \\
+        \textbf{{Cell}}  &\textbf{{Cell}}     &  \textbf{Cell}&   \textbf{Cell} &  \textbf{Cell} \\  \midrule
+        cell  & cell & cell & cell & cell   \\
+        cell  & cell & cell & cell & cell   \\
+        cell  & cell & cell & cell & cell   \\
+        cell  & cell & cell & cell & cell   \\
+        cell  & cell & cell & cell & cell   \\ 
+        cell  & cell & cell & cell & cell   \\ \midrule
+        \multicolumn{4}{r}{\textbf{Cell}} & Cell \\
         \bottomrule[2pt]
     \end{tabular}
 \end{table}
@@ -169,35 +157,35 @@ się ono w pliku main.tex.
 
 
 \clearpage\section{Normy i standardy techniczne}
-\noindent \lipsum[2]
+\noindent \lipsum[1-3]
 
     \subsection{Wymagania prawne}
-    \noindent \lipsum[2]
+    \noindent \lipsum[4-5]
 
     \subsection{Standardy projektowe}
-    \noindent \lipsum[2]
+    \noindent \lipsum[6-7]
 
 \clearpage\section{Określenie problemu}
-    \noindent \lipsum[2]
+    \noindent \lipsum[8-9]
 
 \clearpage\section{Dobór narzędzi}
-    \noindent \lipsum[2]
+    \noindent \lipsum[1-3]
 
     \subsection{Projekt 3D}
-        \noindent \lipsum[2]
+        \noindent \lipsum[4-5]
 
     \subsection{Schematy elektryczne}
-        \noindent \lipsum[2]
+        \noindent \lipsum[6-7]
         
     \subsection{Środowisko symulacyjne}
-        \noindent \lipsum[2]
+        \noindent \lipsum[8-9]
 
 
 \clearpage\section{Wymagania funkcjonalne i techniczne}
-    \noindent \lipsum[2]
+    \noindent \lipsum[1-3]
 
     \subsection{Specyfikacja funkcjonalna}
-        \noindent \lipsum[2]
+        \noindent \lipsum[4-5]
 
     \subsection{Ograniczenia techniczne}
-        \noindent \lipsum[2]
+        \noindent \lipsum[6-7]

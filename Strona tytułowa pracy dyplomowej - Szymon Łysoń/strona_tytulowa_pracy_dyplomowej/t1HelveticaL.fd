@@ -1,3 +1,0 @@
-\ProvidesFile{t1HelveticaL.fd}
-\DeclareFontFamily{T1}{HelveticaL}{}
-\DeclareFontShape{T1}{HelveticaL}{m}{n}{<-> HelveticaL}{}

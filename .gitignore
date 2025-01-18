@@ -1,5 +1,5 @@
 # Ignoruj tylko katalog "katalog_do_wykluczenia/"
-exclude/
+!sdi_projekt/
 
 # Upewnij się, że wszystko inne jest śledzone
-!*
+*

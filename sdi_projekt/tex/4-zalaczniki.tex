@@ -1,30 +1,34 @@
 % Załącznik 1
+
 \clearpage
-\appendix{Nazwa załącznika 1}
-\lipsum[1-3]
+\appendix{Nazwa załącznika A}
+\noindent\lipsum[1-3]
 \begin{figure}[!h]
 	\centering \includegraphics[width=0.5\linewidth]{logopw2.png}
-	\caption{Obrazek w załączniku.}
+	\caption{Obrazek w załączniku}
 \end{figure}
 \lipsum[4-7]
 
 % Załącznik 2
 \clearpage
-\appendix{Nazwa załącznika 2}
+\appendix{Nazwa załącznika B}
 \lipsum[1-2]
 \begin{table}[H] \centering
-    \caption{Some table}
-    \label{tab:cellll}
-    \begin{tabular}{l l l l}
+    \caption{Opis wyprowadzeń i sygnałów}
+    \label{tab:base_pins}
+    \begin{tabular}{c c c c c}
         \toprule[2pt]
-        \textbf{\uline{Col1}}     &  \textbf{\uline{Col2}}&   \textbf{\uline{Col3}} &  \textbf{\uline{Col4}} \\
-        cell1                      & cell2                     & cell3              & cell4                  \\  
-        cell1                      & cell2                     & cell3              & cell4                  \\  
-        cell1                      & cell2                     & cell3              & cell4                  \\  
-        cell1                      & cell2                     & cell3              & cell4                  \\  
-        cell1                      & cell2                     & cell3              & cell4                  \\  
-        \midrule \multicolumn{3}{r}{\textbf{cell}} & cell \\
+         & \multicolumn{2}{c}{\textbf{\uline{Cell}}}& \multicolumn{2}{c}{\textbf{\uline{Cell}}}   \\
+        \textbf{{Cell}}  &\textbf{{Cell}}     &  \textbf{Cell}&   \textbf{Cell} &  \textbf{Cell} \\  \midrule
+        cell  & cell & cell & cell & cell   \\
+        cell  & cell & cell & cell & cell   \\
+        cell  & cell & cell & cell & cell   \\
+        cell  & cell & cell & cell & cell   \\
+        cell  & cell & cell & cell & cell   \\ 
+        cell  & cell & cell & cell & cell   \\ \midrule
+        \multicolumn{4}{r}{\textbf{Cell}} & Cell \\
         \bottomrule[2pt]
     \end{tabular}
 \end{table}
 \lipsum[3-4]
+
