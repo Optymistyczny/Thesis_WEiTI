@@ -29,34 +29,35 @@
 
 
 \ProvidesClass{src/wut-thesis}
+% \LoadClass[a4paper, final , 11pt, twoside, openany]{book} 
 \LoadClass[
-    \wutfontsize,
+    % \wutfontsize,
     twoside,
     % draft, % podświetlenie miejsc, w których tekst wychodzi poza margines
 ]{mwart}
 
 
 % Hyphenation
-\ifwuthyphenation
-\else
-    \tolerance=1
-    \emergencystretch=\maxdimen
-    \hyphenpenalty=10000
-    \hbadness=10000
-\fi
-% Required by caption package
-\setlength\abovecaptionskip{10\p@}
-\setlength\belowcaptionskip{0\p@}
-\long\def\@makecaption#1#2{%
-  \vskip\abovecaptionskip
-  \sbox\@tempboxa{#1: #2}%
-  \ifdim \wd\@tempboxa >\hsize
-    #1: #2\par
-  \else
-    \global \@minipagefalse
-    \hb@xt@1.2\hsize{\hfil\box\@tempboxa\hfil} % szerokość podpisów w odniesieniu do szerokości tekstu strony
-  \fi
-  \vskip\belowcaptionskip}
+% \ifwuthyphenation
+% \else
+%     \tolerance=1
+%     \emergencystretch=\maxdimen
+%     \hyphenpenalty=10000
+%     \hbadness=10000
+% \fi
+% % Required by caption package
+% \setlength\abovecaptionskip{10\p@}
+% \setlength\belowcaptionskip{0\p@}
+% \long\def\@makecaption#1#2{%
+%   \vskip\abovecaptionskip
+%   \sbox\@tempboxa{#1: #2}%
+%   \ifdim \wd\@tempboxa >\hsize
+%     #1: #2\par
+%   \else
+%     \global \@minipagefalse
+%     \hb@xt@1.2\hsize{\hfil\box\@tempboxa\hfil} % szerokość podpisów w odniesieniu do szerokości tekstu strony
+%   \fi
+%   \vskip\belowcaptionskip}
 
 %---------------------
 % Basic dependencies
@@ -69,7 +70,6 @@
 \RequirePackage{fancyhdr}      % Custom header/footer styles
 \RequirePackage{fourier}       % Adobe Utopia font
 \RequirePackage{graphicx}      % Enhanced images support
-% \RequirePackage{ifluatex}      % LuaTeX-specific options
 \RequirePackage{kantlipsum}    % English kantian-style lipsum
 \RequirePackage{lipsum}        % Lorem ipsum
 \RequirePackage{listings}      % Code listings
@@ -159,11 +159,6 @@
 \setlength{\floatsep}{10pt}      % Odstęp między dwoma floatami w pionie.
 \setlength{\intextsep}{10pt}     % Odstęp między floatem wstawionym w tekście (np. [h]) a tekstem.
 
-% Section header formatting -- tu chyba jest też zmieniana czcionka, w razie czego można spróbować tylko z:
-% \usepackage{titlesec}
-% \titlespacing*{\section}{0pt}{10pt}{10pt}  % {nagłówek}{lewy margines}{odstęp przed}{odstęp po}
-% \titlespacing*{\subsection}{0pt}{8pt}{8pt}
-% \titlespacing*{\subsubsection}{0pt}{6pt}{6pt}
 \SetSectionFormatting{section}{0.5cm}{\FormatHangHeading{\Large}}{0.5cm} % odstęp między nagłówkiem sekcji a tekstem
 \SetSectionFormatting{subsection}{0.4cm}{\FormatHangHeading{\large}}{0.4cm} % odstęp między nagłówkiem podsekcji a tekstem
 \SetSectionFormatting{subsubsection}{0.3cm}{\FormatHangHeading{\normalsize}}{0.3cm} % odstęp między nagłówkiem podpodsekcji a tekstem
@@ -230,14 +225,14 @@
     \addcontentsline{toc}{part}{Część #2.\hspace{5pt}#1}
     \thispagestyle{empty} % Pusta strona bez numeru
     \vspace*{\fill} % Wyrównanie do środka strony (góra-dół)
+    {\centering\huge\bfseries Część #2.\par} % Tekst "Część <nazwa części>" nad tytułem
+    \vspace{1cm} % Dystans między nagłówkiem a tytułem
     {\centering\Huge\bfseries #1\par} % Wyśrodkowanie nazwy części
     \vspace*{\fill} % Wypełnienie reszty strony poniżej tytułu
     \newpage % Przejście do nowej strony
 }
 \makeatother
 }
-
-\newcommand{\@faculty}{eiti} % potrzebne do licencji i innych
 
 \newcommand{\engtitle}[1]{
     \newcommand{\@engtitle}{#1}
@@ -313,32 +308,6 @@
     \unskip % Usuwa białe znaki na końcu
 }
 
-%----------------------------
-% Oświadczenie o autorstwie
-%----------------------------
-\newcommand{\makeauthorship}{
-    \thispagestyle{plain}
-    \begin{figure}[ht]
-        \vspace{-55pt}
-        \noindent\makebox[\textwidth]{
-        \includegraphics[width=1.19\textwidth]{src/\@lang/authorship/\@faculty.pdf}
-        }
-    \end{figure}
-}
-
-%----------------------------
-% Oświadczenie o licencji
-%----------------------------
-\newcommand{\makelicense}{
-    \thispagestyle{plain}
-    \begin{figure}[ht]
-        \vspace{-55pt}
-        \noindent\makebox[\textwidth]{
-        \includegraphics[width=1.19\textwidth]{src/\@lang/license/\@faculty.pdf}
-        }
-    \end{figure}
-}
-
 %--------------------------
 % "Zagnieżdżenie" w pracy
 %--------------------------
@@ -407,12 +376,6 @@
         Załącznik
 }
 
-% \let\standardappendix\appendix
-% \renewcommand\appendix[1]{
-%     \refstepcounter{section}
-%     \tocless{\section*}{\@appendixtitle~\arabic{section}.\hspace*{2.5em} #1}
-%     \addcontentsline{app}{subsection}{\hspace*{0em}\arabic{section}.\hspace*{0.5em} #1}
-% }
 \let\standardappendix\appendix
 \renewcommand\appendix[1]{
     \refstepcounter{section}
