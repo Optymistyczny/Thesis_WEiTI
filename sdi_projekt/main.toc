@@ -1,53 +1,48 @@
+\acswitchoff 
 \babel@toc {polish}{}\relax 
-\contentsline {section}{Wprowadzenie}{7}{section*.1}%
-\contentsline {subsection}{Cel pracy}{7}{subsection*.2}%
-\contentsline {part}{Część I.\hspace {5pt}Analiza stanu wiedzy i dobór narzędzi}{9}{section*.3}%
-\contentsline {section}{\numberline {1\relax .\enspace }Istniejące rozwiązania}{11}{section.1}%
-\contentsline {subsection}{\numberline {1.1\relax .\enspace }Przegląd urządzeń o podobnym zastosowaniu}{12}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2\relax .\enspace }Wady i zalety obecnych rozwiązań}{13}{subsection.1.2}%
-\contentsline {section}{\numberline {2\relax .\enspace }Normy i standardy techniczne}{15}{section.2}%
-\contentsline {subsection}{\numberline {2.1\relax .\enspace }Wymagania prawne}{15}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2\relax .\enspace }Standardy projektowe}{15}{subsection.2.2}%
-\contentsline {section}{\numberline {3\relax .\enspace }Określenie problemu}{17}{section.3}%
-\contentsline {section}{\numberline {4\relax .\enspace }Dobór narzędzi}{18}{section.4}%
-\contentsline {subsection}{\numberline {4.1\relax .\enspace }Projekt 3D}{18}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2\relax .\enspace }Schematy elektryczne}{18}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3\relax .\enspace }Środowisko symulacyjne}{19}{subsection.4.3}%
-\contentsline {section}{\numberline {5\relax .\enspace }Wymagania funkcjonalne i techniczne}{20}{section.5}%
-\contentsline {subsection}{\numberline {5.1\relax .\enspace }Specyfikacja funkcjonalna}{20}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2\relax .\enspace }Ograniczenia techniczne}{20}{subsection.5.2}%
-\contentsline {part}{Część II.\hspace {5pt}Projekt i implementacja}{23}{section*.6}%
-\contentsline {section}{\numberline {6\relax .\enspace }Koncepcja urządzenia}{25}{section.6}%
-\contentsline {subsection}{\numberline {6.1\relax .\enspace }Szkic koncepcyjny}{26}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2\relax .\enspace }Schemat blokowy}{26}{subsection.6.2}%
-\contentsline {section}{\numberline {7\relax .\enspace }Dobór technologii i komponentów}{27}{section.7}%
-\contentsline {subsection}{\numberline {7.1\relax .\enspace }Komponenty mechaniczne}{27}{subsection.7.1}%
-\contentsline {subsubsection}{\numberline {7.1.1\relax .\enspace }Układy elektroniczne}{27}{subsubsection.7.1.1}%
-\contentsline {subsubsection}{\numberline {7.1.2\relax .\enspace }Oprogramowanie sterujące}{28}{subsubsection.7.1.2}%
-\contentsline {section}{\numberline {8\relax .\enspace }Symulacje i analizy projektowe}{29}{section.8}%
-\contentsline {subsection}{\numberline {8.1\relax .\enspace }Analiza wytrzymałości konstrukcji}{29}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2\relax .\enspace }Symulacja układu elektronicznego}{29}{subsection.8.2}%
-\contentsline {section}{\numberline {9\relax .\enspace }Etapy realizacji}{30}{section.9}%
-\contentsline {subsection}{\numberline {9.1\relax .\enspace }Montaż mechaniczny}{30}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2\relax .\enspace }Montaż elektroniczny}{30}{subsection.9.2}%
-\contentsline {subsection}{\numberline {9.3\relax .\enspace }Integracja systemu}{31}{subsection.9.3}%
-\contentsline {section}{\numberline {10\relax .\enspace }Dokumentacja techniczna}{32}{section.10}%
-\contentsline {part}{Część III.\hspace {5pt}Badania i analiza powykonawcza}{33}{section*.7}%
-\contentsline {section}{\numberline {11\relax .\enspace }Metodyka testowania}{35}{section.11}%
-\contentsline {subsection}{\numberline {11.1\relax .\enspace }Testy funkcjonalne}{37}{subsection.11.1}%
-\contentsline {subsection}{\numberline {11.2\relax .\enspace }Testy wytrzymałościowe}{37}{subsection.11.2}%
-\contentsline {subsection}{\numberline {11.3\relax .\enspace }Testy wydajnościowe}{38}{subsection.11.3}%
-\contentsline {section}{\numberline {12\relax .\enspace }Wyniki testów}{39}{section.12}%
-\contentsline {subsection}{\numberline {12.1\relax .\enspace }Porównanie wyników z założeniami}{40}{subsection.12.1}%
-\contentsline {subsection}{\numberline {12.2\relax .\enspace }Analiza błędów}{40}{subsection.12.2}%
-\contentsline {section}{\numberline {13\relax .\enspace }Analiza ekonomiczna}{42}{section.13}%
-\contentsline {subsection}{\numberline {13.1\relax .\enspace }Koszty materiałów i komponentów}{43}{subsection.13.1}%
-\contentsline {subsection}{\numberline {13.2\relax .\enspace }Koszty produkcji seryjnej}{43}{subsection.13.2}%
-\contentsline {subsection}{\numberline {13.3\relax .\enspace }Porównanie kosztów z alternatywami}{44}{subsection.13.3}%
-\contentsline {section}{\numberline {14\relax .\enspace }Problemy napotkane podczas budowy i ich rozwiązanie}{45}{section.14}%
-\contentsline {section}{Podsumowanie}{46}{section*.8}%
-\contentsline {section}{Bibliografia}{49}{section*.9}%
-\contentsline {section}{Wykaz symboli i skrótów}{51}{section*.10}%
-\contentsline {section}{Spis rysunków}{52}{section*.10}%
-\contentsline {section}{Spis tabel}{53}{section*.10}%
-\contentsline {section}{Spis załączników}{54}{section*.11}%
+\contentsline {part}{Część I. Analiza stanu wiedzy i dobór narzędzi}{9}{part.1}%
+\contentsline {chapter}{\numberline {1}Istniejące rozwiązania}{11}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Przegląd urządzeń o podobnym zastosowaniu}{12}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Wady i zalety obecnych rozwiązań}{13}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Normy i standardy techniczne}{15}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Wymagania prawne}{15}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Standardy projektowe}{16}{section.2.2}%
+\contentsline {chapter}{\numberline {3}Określenie problemu}{17}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Dobór narzędzi}{18}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Projekt 3D}{18}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Schematy elektryczne}{19}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Środowisko symulacyjne}{19}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Wymagania funkcjonalne i techniczne}{20}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Specyfikacja funkcjonalna}{20}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Ograniczenia techniczne}{21}{section.5.2}%
+\contentsline {part}{Część II. Projekt i implementacja}{23}{part.2}%
+\contentsline {chapter}{\numberline {6}Koncepcja urządzenia}{25}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Szkic koncepcyjny}{26}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Schemat blokowy}{26}{section.6.2}%
+\contentsline {chapter}{\numberline {7}Dobór technologii i komponentów}{27}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Komponenty mechaniczne}{27}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Układy elektroniczne}{28}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Oprogramowanie sterujące}{28}{subsection.7.1.2}%
+\contentsline {chapter}{\numberline {8}Symulacje i analizy projektowe}{29}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Analiza wytrzymałości konstrukcji}{29}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Symulacja układu elektronicznego}{29}{section.8.2}%
+\contentsline {chapter}{\numberline {9}Etapy realizacji}{31}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Montaż mechaniczny}{31}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Montaż elektroniczny}{32}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Integracja systemu}{32}{section.9.3}%
+\contentsline {chapter}{\numberline {10}Dokumentacja techniczna}{33}{chapter.10}%
+\contentsline {part}{Część III. Badania i analiza powykonawcza}{35}{part.3}%
+\contentsline {chapter}{\numberline {11}Metodyka testowania}{37}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Testy funkcjonalne}{39}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Testy wytrzymałościowe}{39}{section.11.2}%
+\contentsline {section}{\numberline {11.3}Testy wydajnościowe}{40}{section.11.3}%
+\contentsline {chapter}{\numberline {12}Wyniki testów}{42}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Porównanie wyników z założeniami}{43}{section.12.1}%
+\contentsline {section}{\numberline {12.2}Analiza błędów}{43}{section.12.2}%
+\contentsline {chapter}{\numberline {13}Analiza ekonomiczna}{45}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Koszty materiałów i komponentów}{46}{section.13.1}%
+\contentsline {section}{\numberline {13.2}Koszty produkcji seryjnej}{46}{section.13.2}%
+\contentsline {section}{\numberline {13.3}Porównanie kosztów z alternatywami}{47}{section.13.3}%
+\contentsline {chapter}{\numberline {14}Problemy napotkane podczas budowy i ich rozwiązanie}{48}{chapter.14}%
+\contentsline {section}{Spis rysunk\'ow}{54}{chapter*.6}%
+\contentsline {section}{Spis tabel}{55}{chapter*.6}%

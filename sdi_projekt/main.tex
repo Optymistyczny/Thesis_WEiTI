@@ -1,4 +1,4 @@
-%--------------------------------------------------------
+%--------------------------------------------------------------------------------
 % Szablon pracy dyplomowej inżynierskiej i magisterskiej
 % Opracowanie: Jakub Stankiewicz
 % Politechnika Warszawska, 2024-2025
@@ -25,25 +25,291 @@
 % Szablon jest udostępniony "tak jak jest" bez żadnej gwarancji lub zapewnienia
 % przydatności do określonego celu. Autor nie ponosi odpowiedzialności za 
 % jakiekolwiek problemy wynikające z jego użycia.
-%--------------------------------------------------------
+%--------------------------------------------------------------------------------
 %  - Bibliografia: Kamil Zdanowicz, Krzysztof Dobrzyniecki  
 %  - Strona tytułowa: Rafał Łysoń
 %  - Treść szablonu: Jakub Stankiewicz
-%--------------------------------------------------------
+%--------------------------------------------------------------------------------
 %  Sposób kompilacji:
 %  pdflatex -> biber -> pdflatex x2
-%--------------------------------------------------------
+%--------------------------------------------------------------------------------
 %  MiKTeX-pdfTeX 4.19 (MiKTeX 24.4)
 %  Wersja biber: 2.20
-%--------------------------------------------------------
-% !TEX root = main.tex
-\documentclass[
-    bindingoffset=0mm,  % Margines na oprawę
-    footnoteindent=0mm, % Wcięcie dla przypisów
-    hyphenation=true,   % Włączenie/wyłączenie dzielenia wyrazów
-    fontsize=11pt,      % Domyślny rozmiar czcionki [11pt]
-]{src/wut-thesis}
+%--------------------------------------------------------------------------------
+% Czcionki w LaTeX:
+% +---------------+--------------------+--------------------+--------------------+
+% | Nazwa         | Rozmiar dla 10pt  | Rozmiar dla 11pt   | Rozmiar dla 12pt   |
+% +---------------+--------------------+--------------------+--------------------+
+% | \tiny         | 5pt               | 6pt                | 6pt                |
+% | \scriptsize   | 7pt               | 8pt                | 8pt                |
+% | \footnotesize | 8pt               | 9pt                | 10pt               |
+% | \small        | 9pt               | 10pt               | 10.95pt            |
+% | \normalsize   | 10pt              | 10.95pt            | 12pt               |
+% | \large        | 12pt              | 12pt               | 14.4pt             |
+% | \Large        | 14.4pt            | 14.4pt             | 17.28pt            |
+% | \LARGE        | 17.28pt           | 17.28pt            | 20.74pt            |
+% | \huge         | 20.74pt           | 20.74pt            | 24.88pt            |
+% | \Huge         | 24.88pt           | 24.88pt            | 29.86pt            |
+% +---------------+--------------------+--------------------+--------------------+
 
+% !TEX root = main.tex
+\documentclass[a4paper, final , 11pt, twoside, openany]{book} 
+
+%-----------------------------------Bibliografia---------------------------------
+\RequirePackage[backend=biber,datamodel=thesis,style=numeric,giveninits=true]{biblatex}
+\input{biblatex-config.tex}
+\addbibresource{bibliografia.bib}   % Plik z bibliografią
+%-------------------------------------Pakiety-----------------------------------
+
+
+% Custom figure and table captions
+\usepackage[
+    font=small,
+    labelfont=bf,
+    labelsep=period,justification=justified,
+    format=hang
+]{caption}
+
+% Custom footnote typesetting
+\usepackage[hang]{footmisc}
+\usepackage{listings}      % Code listings
+\usepackage{fourier}       % Czcionka Adobe Utopia
+\usepackage{amsmath}       % Basic mathematical typesetting
+\usepackage{amssymb}       % Advanced math symbols
+\usepackage{amsthm}        % Theorems typesetting
+\usepackage{array}         % Advanced table column formats
+\usepackage{enumitem}      % Itemize/enumerate
+\usepackage{fancyhdr}      % Custom header/footer styles
+\usepackage{graphicx}      % Enhanced images support
+\usepackage{lipsum}        % Lorem ipsum
+\usepackage{longtable}     % Multi-page tables
+\usepackage{multirow}      % Advanced table cells
+\usepackage{setspace}      % Set space between lines
+\usepackage{scrextend}     % Allows \addmargin environment
+\usepackage{tablefootnote} % Table footnotes
+\usepackage{tocloft}       % Custom ToC/LoF/LoT
+\usepackage{url}           % URL-sensitive line breaks
+\usepackage{xspace}        % Remove duplicated spaces
+\usepackage{layout}
+\usepackage{booktabs}
+\usepackage{etoolbox}
+\usepackage{subcaption}     % do podwójnych tabel
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage[a4paper, left=30mm, right=20mm, top=25mm, bottom=25mm]{geometry}
+\usepackage[normalem]{ulem} % do podkreślania tekstu - użyte w tabeli
+\usepackage[protrusion=true,expansion=true,letterspace=400]{microtype}
+\usepackage[bookmarksnumbered=true,bookmarksopenlevel=3]{hyperref}
+\usepackage{acro}
+\usepackage[polish]{babel}
+\usepackage{csquotes}
+
+\renewcommand{\listfigurename}{Spis rysunków}
+\renewcommand{\listtablename}{Spis tabel}
+\renewcommand{\tablename}{Tabela}
+\renewcommand{\contentsname}{Spis treści}
+\renewcommand{\lstlistingname}{Kod źródłowy}
+
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % kropki w spisie treści dla chapter
+\renewcommand{\thefigure}{\arabic{figure}} %numeracja ciągła
+\renewcommand{\thetable}{\arabic{table}}
+\renewcommand{\theequation}{\arabic{equation}}
+\lstset{numberbychapter=false}
+
+
+\setlength{\footnotemargin}{4mm} 
+\setlength{\parindent}{5mm}      % Wcięcie akapitowe
+\setlength{\textfloatsep}{10pt}  % Odstęp między floatem na górze lub dole strony a tekstem.
+\setlength{\floatsep}{10pt}      % Odstęp między dwoma floatami w pionie.
+\setlength{\intextsep}{10pt}     % Odstęp między floatem wstawionym w tekście (np. [h]) a tekstem.
+
+\setstretch{1.15}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+
+% Dodanie kropki po numerze rozdziału (chapter) w spisie treści
+\renewcommand{\cftchapaftersnum}{.} % Kropka po numerze rozdziału
+\setlength{\cftchapnumwidth}{2.5em} % Szerokość miejsca na numer rozdziału w spisie treści
+
+% Dodanie kropki po numerze sekcji w spisie treści
+\renewcommand{\cftsecaftersnum}{.} % Kropka po numerze sekcji
+\setlength{\cftsecnumwidth}{10em}   % Szerokość miejsca na numer sekcji w spisie treści
+
+% Dodanie kropki po numerze podsekcji w spisie treści
+\renewcommand{\cftsubsecaftersnum}{.} % Kropka po numerze podsekcji
+\setlength{\cftsubsecnumwidth}{2.5em} % Szerokość miejsca na numer podsekcji w spisie treści
+
+% Dodanie kropki po numerze podpodsekcji w spisie treści
+\renewcommand{\cftsubsubsecaftersnum}{.} % Kropka po numerze podpodsekcji
+\setlength{\cftsubsubsecnumwidth}{3.5em}  % Szerokość miejsca na numer podpodsekcji w spisie treści
+
+\renewcommand{\cfttabaftersnum}{.} % Kropka po numerze
+\setlength{\cfttabnumwidth}{1.5em} 
+
+\renewcommand{\cftfigaftersnum}{.} % Kropka po numerze
+\setlength{\cftfignumwidth}{1.5em} 
+
+\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{}{0pt}{\thechapter.\hspace{1em}\huge}
+\titlespacing*{\chapter}{0pt}{-20pt}{40pt}
+\titleformat{\section}{\Large\bfseries}{\thesection.\hspace{1em}}{0.3cm}{}
+\titlespacing{\section}{0pt}{0.5cm}{0.5cm}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.\hspace{1em}}{0.1cm}{}
+\titlespacing{\subsection}{0pt}{0.4cm}{0.4cm}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection.\hspace{1em}}{0.1cm}{}
+\titlespacing{\subsubsection}{0pt}{0.3cm}{0.3cm}
+
+% List formatting
+% Odstępy między tekstem a listami, marginesami oraz czcionki
+\setlist[itemize,1]{topsep=3pt,itemsep=1.5pt, parsep=2pt,label=\large$\bullet$, leftmargin=24pt}
+\setlist[itemize,2]{topsep=3pt,itemsep=1pt, parsep=2pt,leftmargin=16pt}
+\setlist[itemize,3]{topsep=3pt,itemsep=0.4pt, parsep=2pt,leftmargin=14pt}
+\setlist[enumerate,1]{topsep=3pt,itemsep=1.5pt, parsep=2pt,leftmargin=24pt}
+\setlist[enumerate,2]{topsep=3pt,itemsep=1pt, parsep=2pt,leftmargin=16pt}
+\setlist[enumerate,3]{topsep=3pt,itemsep=0.4pt, parsep=2pt,leftmargin=14pt}
+\setlist[description,1]{labelindent=12pt, topsep=3pt,itemsep=1.5pt, parsep=2pt}
+% Section header formatting
+\setlist[itemize]{before=\fontsize{11}{12.65}\selectfont}      % dla standardowych, krótkich list nie zmieniamy czcionki.
+\setlist[enumerate]{before=\fontsize{11}{12.65}\selectfont}    % czcionkę zmieniamy ręcznie dla list długich
+\setlist[description]{before=\fontsize{11}{12.65}\selectfont}
+
+\captionsetup{
+    width=0.9\textwidth, % Większa szerokość podpisu
+    indention=-30pt % Ujemne wcięcie pierwszego wiersza
+}
+
+\fancypagestyle{plain}{
+	\fancyhf{}
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyfoot[LE,RO]{\thepage}
+}
+% Opcje spisu treści
+\setlength{\cftbeforesecskip}{2pt}
+\setlength{\cftpartnumwidth}{3em} % Opcjonalne dostosowanie szerokości numeracji
+\setlength{\cftsecnumwidth}{2em}    % Szerokość miejsca na numer sekcji
+\setlength{\cftsubsecnumwidth}{2.5em} % Szerokość miejsca na numer podsekcji
+\setlength{\cftsubsubsecnumwidth}{3.5em} % Szerokość miejsca na numer podpodsekcji
+
+% Redefinicja part
+\renewcommand{\part}[1]{%
+    \cleardoublepage % Rozpoczyna część na nowej nieparzystej stronie
+    \thispagestyle{empty} % Usuwa numer strony
+    \refstepcounter{part} % Zwiększa licznik części
+    \addcontentsline{toc}{part}{Część \thepart. #1}
+    \vspace*{\fill} % Wyrównanie do środka strony (góra-dół)
+    {\centering
+        \normalfont\huge\bfseries Część \thepart. \\ % Nagłówek "Część <numer>"
+        \vspace{0.5cm} % Odstęp pod nagłówkiem
+        \Huge #1\par % Tytuł części
+    }%
+    \vspace*{\fill} % Wyrównanie dolnej części strony
+    \newpage % Przechodzi na nową stronę
+}
+%-------------------------
+% Streszczenie po polsku
+%-------------------------
+\newenvironment{pl_abstract}{
+    \thispagestyle{plain} % Styl strony
+    \par % Rozpocznij paragraf
+    \fontsize{12}{13.8}\selectfont % Ustaw czcionkę
+    \vspace*{1cm} % Odstęp pod tytułem dokumentu
+    \begin{center}
+        \textbf{\Large
+        Niepotrzebnie długi i skomplikowany tytuł pracy \\ trudny do przeczytania, zrozumienia i wymówienia
+        } % Wycentrowany pogrubiony tytuł dokumentu
+    \end{center}
+    \vspace*{4cm} % Odstęp pod tytułem dokumentu
+    \begin{center}
+        \noindent\textbf{\large Abstrakt}
+    \end{center}
+    % \vspace{0.5cm} % Dodatkowy odstęp pod "Streszczenie"
+    \par\noindent\ignorespaces
+}{
+    \ignorespacesafterend % Usuń odstępy po środowisku
+}
+\newenvironment{slowa_klucze}{
+    % \par % Rozpoczyna nowy akapit
+    \fontsize{12}{13.8}\selectfont % Lokalna zmiana czcionki
+    \thispagestyle{plain} % Styl strony
+    \vspace{0.5cm} % Odstęp
+    \noindent \textbf{Słowa kluczowe:} 
+    \ignorespaces % Ignoruje białe znaki przed treścią środowiska
+}{
+    \par % Kończy akapit
+    \unskip % Usuwa białe znaki na końcu
+}
+%----------------------------
+% Streszczenie po angielsku
+%----------------------------
+\newenvironment{eng_abstract}{
+    \thispagestyle{plain} % Styl strony
+    \par % Rozpocznij paragraf
+    \fontsize{12}{13.8}\selectfont % Ustaw czcionkę
+    \vspace*{1cm} % Odstęp pod tytułem dokumentu
+    \begin{center}
+        \textbf{\Large
+        Unnecessarily long and complicated thesis' title \\ difficult to read, understand and pronounce
+        } % Wycentrowany pogrubiony tytuł dokumentu
+    \end{center}
+    \vspace*{4cm} % Odstęp pod tytułem dokumentu
+    \begin{center}
+        \noindent\textbf{\large Abstract}
+    \end{center}
+    \par\noindent\ignorespaces
+}{
+    \ignorespacesafterend % Usuń odstępy po środowisku
+}
+\newenvironment{second_keywords}{
+    \par % Rozpoczyna nowy akapit
+    \fontsize{12}{13.8}\selectfont % Lokalna zmiana czcionki
+    \thispagestyle{plain} % Styl strony
+    \vspace{0.5cm} % Odstęp
+    \noindent \textbf{Keywords:} 
+    \ignorespaces % Ignoruje białe znaki przed treścią środowiska
+}{
+    \par % Kończy akapit
+    \unskip % Usuwa białe znaki na końcu
+}
+
+\makeatletter
+%-------------------
+% Spis załączników
+%-------------------
+% Wyłączenie linii dodawania do spisu treści
+\newcommand{\nocontentsline}[3]{}
+
+% Tworzenie załącznika bez dodawania do spisu treści
+\newcommand{\tocless}[2]{%
+    \bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup
+}
+
+% Nagłówek dla załącznika
+\newcommand{\@appendixtitle}{
+        Załącznik
+}
+
+% Przedefiniowanie zachowania \appendix
+
+\let\standardappendix\appendix
+\renewcommand\appendix[1]{
+    \refstepcounter{section}
+    \renewcommand\thesection{\Alph{section}} % Numeracja literowa
+    \tocless{\section*}{\@appendixtitle~\thesection\hspace*{2.5em} #1}
+    \addcontentsline{app}{subsection}{\hspace*{0em}\thesection.\hspace*{0.5em} #1}
+}
+\newcommand\listofappendicestoc{
+    \section*{Spis załączników}\@starttoc{app}
+    \standardappendix
+    \renewcommand{\thesection}{\arabic{section}}
+}
+\newcommand{\listoffigurestoc}{
+    \listoffigures
+    \addcontentsline{toc}{section}{\listfigurename}
+}
+\newcommand{\listoftablestoc}{
+    \listoftables
+    \addcontentsline{toc}{section}{\listtablename}
+}
 % Odkomentowanie poniższej linii spowoduje kompilację 
 % tylko wybranych plików. Stare odwołania i 
 % numeracja zostaną zachowane. Przydatne w przypadku dużych prac.
@@ -52,9 +318,15 @@
 % \includeonly{tex/2-czesc-wykonawcza}  % Częściowa kompilacja 
 % \includeonly{tex/3-podsumowanie}      % Częściowa kompilacja 
 
+
+
 \graphicspath{{img/}}               % Katalog z ilustracjami
-\addbibresource{bibliografia.bib}   % Plik .bib z bibliografią
 \hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black,
     pdftitle={Temat pracy dyplomowej},
     pdfsubject={Zagadnienia poruszane w pracy},
     pdfauthor={Autor},
@@ -63,8 +335,14 @@
     pdfkeywords={Słowa kluczowe}}
 
 % \usepackage{showframe} % Wyświetlenie linii marginesów
+\usepackage{strona_tytulowa_pliki/FrontPage}
+
+
+\DeclareAcronym{ei}{short=EiTI, long=Wydział Elektroniki i Technik Informacyjnych}
+\DeclareAcronym{pw}{short=PW, long=Politechnika Warszawska}
 
 \begin{document}
+
 % \layout % Podgląd układu stron pracy
 %--------------------------------------------------------
 % Strona tytułowa
@@ -87,12 +365,6 @@
 \date{\the\year}
 \maketitle{}
 %------------------------------------------------
-\poltitle{
-    Niepotrzebnie długi i skomplikowany tytuł pracy \\ trudny do przeczytania, zrozumienia i wymówienia
-}
-\engtitle{
-    Unnecessarily long and complicated thesis' title \\ difficult to read, understand and pronounce
-}
 
 \cleardoublepage % Zaczynamy od nieparzystej strony
 \include{tex/0-abstrakt}
@@ -101,9 +373,9 @@
 \cleardoublepage % Zaczynamy od nieparzystej strony
 \tableofcontents % Spis treści
 
-%------------------------------------------------
-% Części pracy
-%------------------------------------------------
+% %------------------------------------------------
+% % Części pracy
+% %------------------------------------------------
 \cleardoublepage % Powinna zaczynać się na nieparzystej stronie
 \include{tex/1-czesc-teoretyczna}
 \cleardoublepage % Powinna zaczynać się na nieparzystej stronie
@@ -117,15 +389,9 @@
 
 % Wykaz symboli i skrótów.
 % Należy posortować symbole alfabetycznie
-% we własnym zakresie. Makro \acronymlist
-% generuje właściwy tytuł sekcji w zależności od języka.
-% Makro \acronym dodaje skrót/symbol do listy,
-% zapewniając podstawowe formatowanie.
-\acronymlist
-\acronym{EiTI}{Wydział Elektroniki i Technik Informacyjnych}
-\acronym{PW}{Politechnika Warszawska}
-\acronym{WEIRD}{ang. \emph{Western, Educated, Industrialized, Rich and Democratic}}
-\vspace{0.8cm}
+% we własnym zakresie.
+\printacronyms % Wydruk listy akronimów (opcjonalne)
+
 
 %--------------------------------------
 % Spisy
@@ -138,11 +404,11 @@
 \newpage                % Odstęp pionowy
 \listofappendicestoc    % Spis załączników
 
-%--------------------------------------
-% Załączniki
-%--------------------------------------
-% Ilustracje i tabele w załącznikach nie pojawią się
-% w głównym spisie treści
+% %--------------------------------------
+% % Załączniki
+% %--------------------------------------
+% % Ilustracje i tabele w załącznikach nie pojawią się
+% % w głównym spisie treści
 \captionsetup[figure]{list=no}
 \captionsetup[table]{list=no}
 \include{tex/4-zalaczniki}
